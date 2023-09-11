@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <h2 class="text-success text-center">Registration Form</h2>
+        <div class="col-10">
+            <form [formGroup]="resgistrationForm">
+                {{resgistrationForm.value | json}}
+
+                <div class="form-group mb-3">
+                    <label for="name">Name</label>
+                    <input formControlName="userName" type="text" class="form-control"
+                        placeholder="your name exemple wajdi" name="name" id="name">
+
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password">password</label>
+                    <input formControlName="password" type="password" class="form-control" name="password"
+                        id="password">
+
+                </div>
+                <div class="form-group mb-3">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input formControlName="ConfirmPassword" type="password" class="form-control" name="confirmpassword"
+                        id="confirmpassword">
+
+                </div>
+                <div formGroupName="adresse">
+                    <div class="form-group">
+                        <label for="city">city</label>
+                        <input class="form-control" formControlName="city" placeholder="rue *** resident ***">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">state</label>
+                        <input class="form-control" formControlName="state" placeholder="state">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="CodePostale">Code Postale</label>
+                        <input class="form-control" formControlName="CodePostale" placeholder="****">
+                    </div>
+                </div>
+                <button (click)="onSubmit()" class="mb-5 btn btn-primary w-100" id="btnRgister">Register</button>
+                <button (click)="onLoad()" class="mb-5 btn btn-danger w-100" id="btnApi">Load Api Data</button>
+            </form>
+        </div>
+    </div>
+</div>

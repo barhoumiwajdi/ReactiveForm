@@ -1,0 +1,85 @@
+<div class="container">
+
+    <div class="row d-flex justify-content-center">
+        <h2 class="text-center text-success">FivePoints Bootcamp Enrollement Form</h2>
+        <div class="col-10">
+            <form action="" #userform="ngForm" novalidate>
+
+                <fieldset>
+                    <legend>
+                        Informations de payement
+                    </legend>
+                    <div class="mb-3 form-group">
+                        <label for="Name" class="form-label">Name </label>
+                        <input required minlength="4" type="text" [class.is-invalid]="name.invalid && name.touched"
+                            required #name="ngModel" class="form-control" id="Name" name="name" placeholder="name"
+                            [(ngModel)]="userModel.name">
+                        <small class="text-danger" [class.d-none]="name.valid || name.untouched"> Name is
+                            Required</small>
+
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="Email" class="form-label">Email </label>
+                        <input required type="text" [class.is-invalid]="email.invalid && email.touched" required
+                            #email="ngModel" class="form-control" id="email" name="email" placeholder="email"
+                            [(ngModel)]="userModel.email"
+                            pattern="(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}">
+
+                        <small class="text-danger"
+                            [class.d-none]="email.valid || email.untouched || email.errors?.['pattern']"> email is
+                            Required</small>
+
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Informations de payement
+                    </legend>
+                    <div class="mb-3 form-group">
+                        <label for="typeDeCarte" class="form-label">typeDeCarte </label>
+                        <input required type="text" [class.is-invalid]="typeDeCarte.invalid && typeDeCarte.touched"
+                            required #typeDeCarte="ngModel" class="form-control" id="typeDeCarte" name="typeDeCarte"
+                            placeholder="typeDeCarte" [(ngModel)]="userModel.typeDeCarte">
+                        <small class="text-danger" [class.d-none]="typeDeCarte.valid || typeDeCarte.untouched">
+                            typeDeCarte is
+                            Required</small>
+
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="NumCarte" class="form-label">Num Carte </label>
+                        <input required type="text" minlength="8"
+                            [class.is-invalid]="NumCarte.invalid && NumCarte.touched" required #NumCarte="ngModel"
+                            class="form-control" id="NumCarte" name="NumCarte" placeholder="NumCarte"
+                            [(ngModel)]="userModel.NumCarte">
+                        <small class="text-danger" [class.d-none]="NumCarte.valid || NumCarte.untouched"> typeDeCarte is
+                            Required</small>
+
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="DateExp" class="form-label">DateExp </label>
+                        <input required type="text" [class.is-invalid]="DateExp.invalid && DateExp.touched" required
+                            #DateExp="ngModel" class="form-control" id="DateExp" name="DateExp" placeholder="DateExp"
+                            [(ngModel)]="userModel.DateExp">
+                        <small class="text-danger" [class.d-none]="DateExp.valid || DateExp.untouched"> DateExp is
+                            Required</small>
+
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="Code" class="form-label">Code </label>
+                        <input required minlength="4" type="text" [class.is-invalid]="Code.invalid && Code.touched"
+                            required #Code="ngModel" class="form-control" id="Code" name="Code" placeholder="Code"
+                            [(ngModel)]="userModel.Code">
+                        <small class="text-danger"
+                            [class.d-none]="Code.valid || Code.untouched || Code.errors?.['minlength']"> Code is
+                            Required</small>
+
+                    </div>
+                </fieldset>
+                <button (click)="onSubmit()" [disabled]="userform.form.invalid"
+                    class="btn btn-primary w-100">Valider</button>
+            </form>
+        </div>
+    </div>
+</div>
