@@ -59,7 +59,7 @@
                     </div>
                     <div class="mb-3 form-group">
                         <label for="DateExp" class="form-label">DateExp </label>
-                        <input required type="text" [class.is-invalid]="DateExp.invalid && DateExp.touched" required
+                        <input required type="date" [class.is-invalid]="DateExp.invalid && DateExp.touched" required
                             #DateExp="ngModel" class="form-control" id="DateExp" name="DateExp" placeholder="DateExp"
                             [(ngModel)]="userModel.DateExp">
                         <small class="text-danger" [class.d-none]="DateExp.valid || DateExp.untouched"> DateExp is

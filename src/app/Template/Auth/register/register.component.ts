@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validator } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { NamForbiden } from '../../../Shared/Validator';
+
 
 @Component({
   selector: 'app-register',
@@ -22,7 +24,7 @@ export class RegisterComponent implements OnInit {
     })*/
 
   resgistrationForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', (Validators.required, Validators.minLength(3))),
     password: new FormControl(''),
     ConfirmPassword: new FormControl(''),
     adresse: new FormGroup({
@@ -31,6 +33,9 @@ export class RegisterComponent implements OnInit {
       CodePostale: new FormControl('')
     })
   })
+  get username() {
+    return this.resgistrationForm.controls.name
+  }
 
   ngOnInit(): void {
 

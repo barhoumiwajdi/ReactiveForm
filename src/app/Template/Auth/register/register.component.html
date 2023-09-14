@@ -7,18 +7,23 @@
 
                 <div class="form-group mb-3">
                     <label for="name">Name</label>
-                    <input
-                        [class.is-invalid]="resgistrationForm.controls.name.invalid && resgistrationForm.controls.name.touched "
-                        formControlName="name" type="text" class="form-control" placeholder="your name exemple wajdi"
-                        name="name" id="name" required>
+                    <input [class.is-invalid]="username.invalid && username.touched " formControlName="name" type="text"
+                        class="form-control" placeholder="your name exemple wajdi" name="name" id="name" required>
 
-                    <small class="text-danger"
+                    <!-- <small class="text-danger"
                         [class.d-none]="resgistrationForm.controls.name.untouched || resgistrationForm.controls.name.valid ">
                         name is
-                        required {{resgistrationForm.controls.name.invalid}}</small>
+                        required {{resgistrationForm.controls.name.invalid}}</small> -->
+                    <div *ngIf="username.touched && username.invalid ">
+                        <small *ngIf="username.errors?.['required']" class="text-danger">
+                            user name is required
+                        </small>
+                        <small class="text-danger" *ngIf="username.errors?.['minlength']">
+                            user name a least 3 caractére
+                        </small>
+                    </div>
                 </div>
-                {{resgistrationForm.controls.name.valid}}
-                {{resgistrationForm.controls.name.invalid}}
+
                 <div class="form-group mb-3">
                     <label for="password">password</label>
                     <input formControlName="password"
@@ -27,8 +32,7 @@
                     <small class="text-danger"
                         [class.d-none]="resgistrationForm.controls.password.valid || resgistrationForm.controls.password.untouched">password
                         required</small>
-                    {{resgistrationForm.controls.password.valid}}
-                    {{resgistrationForm.controls.password.invalid}}
+
                 </div>
                 <div class="form-group mb-3">
                     <label for="confirmpassword">Confirm Password</label>
@@ -39,7 +43,7 @@
                         (resgistrationForm.controls.ConfirmPassword.value != resgistrationForm.controls.password.value)">
                     <small class="text-danger"
                         [class.d-none]="(resgistrationForm.controls.ConfirmPassword.value ==resgistrationForm.controls.password.value) &&
-                         resgistrationForm.controls.ConfirmPassword.valid || resgistrationForm.controls.ConfirmPassword.untouched">password
+                         resgistrationForm.controls.ConfirmPassword.valid || resgistrationForm.controls.ConfirmPassword.touched">password
                         do not match</small>
                 </div>
                 <div formGroupName="adresse">
