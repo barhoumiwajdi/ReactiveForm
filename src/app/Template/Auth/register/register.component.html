@@ -21,6 +21,9 @@
                         <small class="text-danger" *ngIf="username.errors?.['minlength']">
                             user name a least 3 caractére
                         </small>
+                        <small class="text-danger" *ngIf="username.errors?.['forbiddenName']">
+                            Name not allowed
+                        </small>
                     </div>
                 </div>
 

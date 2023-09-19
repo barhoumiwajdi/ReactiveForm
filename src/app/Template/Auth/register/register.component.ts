@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { NamForbiden } from '../../../Shared/Validator';
+import { ForbiddenNameValidator } from '../../../Shared/Validator';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     })*/
 
   resgistrationForm = new FormGroup({
-    name: new FormControl('', (Validators.required, Validators.minLength(3))),
+    name: new FormControl('', [Validators.required, Validators.minLength(3), ForbiddenNameValidator(/admin/)]),
     password: new FormControl(''),
     ConfirmPassword: new FormControl(''),
     adresse: new FormGroup({
