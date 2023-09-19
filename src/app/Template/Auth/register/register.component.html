@@ -2,38 +2,52 @@
     <div class="row d-flex justify-content-center">
         <h2 class="text-success text-center">Registration Form</h2>
         <div class="col-10">
-            <form [formGroup]="resgistrationForm">
+            <form *ngIf="resgistrationForm" [formGroup]="resgistrationForm">
                 {{resgistrationForm.value | json}}
 
                 <div class="form-group mb-3">
                     <label for="name">Name</label>
-                    <input [class.is-invalid]="username.invalid && username.touched " formControlName="name" type="text"
-                        class="form-control" placeholder="your name exemple wajdi" name="name" id="name" required>
+                    <input [class.is-invalid]="username?.invalid && username?.touched " formControlName="name"
+                        type="text" class="form-control" placeholder="your name exemple wajdi" name="name" id="name"
+                        required>
 
                     <!-- <small class="text-danger"
                         [class.d-none]="resgistrationForm.controls.name.untouched || resgistrationForm.controls.name.valid ">
                         name is
                         required {{resgistrationForm.controls.name.invalid}}</small> -->
-                    <div *ngIf="username.touched && username.invalid ">
-                        <small *ngIf="username.errors?.['required']" class="text-danger">
+                    <div *ngIf="username?.touched && username?.invalid ">
+                        <small *ngIf="username?.errors?.['required']" class="text-danger">
                             user name is required
                         </small>
-                        <small class="text-danger" *ngIf="username.errors?.['minlength']">
+                        <small class="text-danger" *ngIf="username?.errors?.['minlength']">
                             user name a least 3 caractére
                         </small>
-                        <small class="text-danger" *ngIf="username.errors?.['forbiddenName']">
+                        <small class="text-danger" *ngIf="username?.errors?.['forbiddenName']">
                             Name not allowed
                         </small>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input formControlName="email" class="form-control" name="email" id="email"
+                        [class.is-inalid]="email?.invalid && email?.touched">
+                    <small class="text-danger" [class.d-none]="email?.valid || email?.untouched"> email is
+                        required</small>
+                </div>
+                <div class="form-group">
+
+                    <input type="checkbox" formControlName="subscribe" class="form-check-input" name="subscribe"
+                        id="subscribe">
+                    <label for="subscribe">Subscribe</label>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="password">password</label>
                     <input formControlName="password"
-                        [class.is-invalid]="resgistrationForm.controls.password.invalid && resgistrationForm.controls.password.touched"
+                        [class.is-invalid]="resgistrationForm.controls['password'].invalid && resgistrationForm.controls['password'].touched"
                         type="password" class="form-control" name="password" id="password" required>
                     <small class="text-danger"
-                        [class.d-none]="resgistrationForm.controls.password.valid || resgistrationForm.controls.password.untouched">password
+                        [class.d-none]="resgistrationForm.controls['password'].valid || resgistrationForm.controls['password'].untouched">password
                         required</small>
 
                 </div>

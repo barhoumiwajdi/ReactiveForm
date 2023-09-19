@@ -20,3 +20,10 @@ export function PasswordValidator(control: AbstractControl): { [Key: string]: bo
         { "MissMatch": true } :
         null;
 }
+
+export function EmailValidator(control: AbstractControl): { [Key: string]: boolean } | null {
+
+
+    return null
+
+}
