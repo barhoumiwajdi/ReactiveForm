@@ -40,13 +40,8 @@
                 <div class="form-group mb-3">
                     <label for="confirmpassword">Confirm Password</label>
                     <input formControlName="ConfirmPassword" type="password" class="form-control" name="confirmpassword"
-                        id="confirmpassword" required
-                        [class.is-invalid]="resgistrationForm.controls.ConfirmPassword.invalid && 
-                        resgistrationForm.controls.ConfirmPassword.touched && 
-                        (resgistrationForm.controls.ConfirmPassword.value != resgistrationForm.controls.password.value)">
-                    <small class="text-danger"
-                        [class.d-none]="(resgistrationForm.controls.ConfirmPassword.value ==resgistrationForm.controls.password.value) &&
-                         resgistrationForm.controls.ConfirmPassword.valid || resgistrationForm.controls.ConfirmPassword.touched">password
+                        id="confirmpassword" required [class.is-invalid]="resgistrationForm.errors?.['MissMatch'] ">
+                    <small class="text-danger" *ngIf="resgistrationForm.errors?.['MissMatch']">password
                         do not match</small>
                 </div>
                 <div formGroupName="adresse">

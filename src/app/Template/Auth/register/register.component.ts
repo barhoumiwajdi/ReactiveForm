@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ForbiddenNameValidator } from '../../../Shared/Validator';
+import { ForbiddenNameValidator, PasswordValidator } from '../../../Shared/Validator';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
       state: new FormControl(''),
       CodePostale: new FormControl('')
     })
-  })
+  }, { validators: PasswordValidator })
   get username() {
     return this.resgistrationForm.controls.name
   }
