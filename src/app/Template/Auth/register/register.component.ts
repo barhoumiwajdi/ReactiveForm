@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ForbiddenNameValidator, PasswordValidator } from '../../../Shared/Validator';
 import { Subscriber } from 'rxjs';
+import { UserServicesService } from 'src/app/Services/user-services.service';
+import { Router, Routes } from '@angular/router';
+
 
 
 @Component({
@@ -24,9 +27,9 @@ export class RegisterComponent implements OnInit {
       })
     })*/
   resgistrationForm?: FormGroup;
+  constructor(private userservices: UserServicesService, private router: Router,) { }
 
-
-
+  ErrorMsg = ''
 
   ngOnInit(): void {
     this.resgistrationForm = new FormGroup({
@@ -64,6 +67,24 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.resgistrationForm?.value)
+    const data = this.resgistrationForm?.value;
+    console.log(data);
+
+    this.userservices.addUser(data)
+      .subscribe(
+        data => {
+          console.log("data received ", data)
+          this.router.navigate(['/login']);
+
+
+        },
+
+        error => {
+          console.log(error)
+          console.log(error)
+          this.ErrorMsg = error.statusText
+        }
+      )
   }
   onLoad() {
     /** we can use patch value to display spécefic element */
@@ -79,6 +100,10 @@ export class RegisterComponent implements OnInit {
 
     }
     )
+
   }
+
+
+
 }
 

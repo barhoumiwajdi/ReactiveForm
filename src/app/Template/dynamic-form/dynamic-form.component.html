@@ -1,0 +1,47 @@
+<h2>dynamic-form works!</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <form action="" *ngIf="dynamicform" [formGroup]="dynamicform">
+                {{dynamicform.value | json}}
+                <div class="mb-3 form-group">
+                    <label for="Name" class="form-label">Name </label>
+                    <input required minlength="4" type="text"
+                        [class.is-invalid]="dynamicform.controls['name'].invalid && dynamicform.controls['name'].touched"
+                        required formControlName="name" class="form-control" id="Name" name="name" placeholder="name">
+                    <!-- <small class="text-danger"  > Name is
+                    Required</small> -->
+                    <button type="button" class="btn btn-primary m-5" id="btn" name="btn"
+                        (click)="addalternatefield()">Ajouter Text
+                        Field</button>
+                    <div formArrayName="alternate" *ngFor="let field of alternate.controls ; let i=index">
+                        <label for="field">field {{i}}</label>
+                        <input type="text" formControlName="{{i}}" class="form-control" name="field{{i}}" required
+                            id="field{{i}}" placeholder="Field {{i}}">
+                    </div>
+                    <hr>
+                    <button type="button" class="btn btn-primary m-5" id="btn" name="btn"
+                        (click)="addalternatecheckbox()">Ajouter checkbox
+                        Field</button>
+                    <div formArrayName="alternatecheckbox"
+                        *ngFor="let field of alternatecheckbox.controls ; let i=index">
+                        <label for="field">choix {{i}}</label>
+                        <input type="checkbox" formControlName="{{i}}" value="choix{{i}}" id="TheOne"
+                            class="form-check-input" name="field{{i}}" required id="field{{i}}">
+                    </div>
+                    <hr>
+                    <!-- <button type="button" class="btn btn-primary m-5" id="btn" name="btn"
+                        (click)="addalternateradiobox()">Ajouter radio Box
+                        Field</button>
+                    <div formArrayName="alternateradiobox"
+                        *ngFor="let field of alternateradiobox.controls ; let i=index">
+                        <label for="field">choix {{i}}</label>
+                        <input type="radio" formControlName="radio{{i}}" value="choix{{i}}" class=" form-check-input"
+                            name="flexRadioDefault" required id="TheOne">
+                    </div> -->
+                </div>
+                <button class="btn btn-primary" type="button" (click)="onSubmit()">Valider Form Data</button>
+            </form>
+        </div>
+    </div>
+</div>

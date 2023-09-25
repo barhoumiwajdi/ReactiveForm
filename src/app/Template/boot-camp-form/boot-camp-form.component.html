@@ -4,6 +4,7 @@
         <h2 class="text-center text-success">FivePoints Bootcamp Enrollement Form</h2>
         <div class="col-10">
             <form action="" #userform="ngForm" novalidate>
+                {{userform.value | json}}
 
                 <fieldset>
                     <legend>
