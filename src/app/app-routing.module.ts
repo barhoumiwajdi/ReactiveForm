@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './Template/Auth/register/register.component';
 import { BootCampFormComponent } from './Template/boot-camp-form/boot-camp-form.component';
 import { DynamicFormComponent } from './Template/dynamic-form/dynamic-form.component';
-import { HomeComponent } from './Template/home/home.component';
+
 import { LoginComponent } from './Template/Auth/login/login.component';
 
 const routes: Routes = [

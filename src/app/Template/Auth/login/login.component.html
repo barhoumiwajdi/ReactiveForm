@@ -4,39 +4,50 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card vh-100 bg-dark text-white" style="border-radius: 1rem;">
                     <div class="card-body text-center">
+                        <form action="" *ngIf="LoginForm" [formGroup]="LoginForm">
+                            <div class="mb-md-5 mt-md-4">
 
-                        <div class="mb-md-5 mt-md-4">
+                                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
-                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                                <div class="form-group">
+                                    <label for="email">email</label>
+                                    <input formControlName="email" class="form-control" name="email" id="email"
+                                        [class.is-inalid]="email?.invalid && email?.touched">
+                                    <small class="text-danger" [class.d-none]="email?.valid || email?.untouched">
+                                        email is
+                                        required</small>
+                                </div>
 
-                            <div class="form-outline form-white mb-4">
-                                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX">Email</label>
-                            </div>
+                                <div class="form-group mb-3">
+                                    <label for="password">password</label>
+                                    <input formControlName="password"
+                                        [class.is-invalid]="LoginForm.controls['password'].invalid && LoginForm.controls['password'].touched"
+                                        type="password" class="form-control" name="password" id="password" required>
+                                    <small class="text-danger"
+                                        [class.d-none]="LoginForm.controls['password'].valid || LoginForm.controls['password'].untouched">password
+                                        required</small>
 
-                            <div class="form-outline form-white mb-4">
-                                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX">Password</label>
-                            </div>
-
-                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
-
-                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                            </div>
-                            <div>
-                                <p>Don't have an account? <a href="/register" class="text-white-50 fw-bold">Sign
-                                        Up</a>
+                                </div>
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a>
                                 </p>
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit"
+                                    (click)="onSubmit()">Login</button>
+
+                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                    <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                    <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                                </div>
+                                <div>
+                                    <p>Don't have an account? <a href="/register" class="text-white-50 fw-bold">Sign
+                                            Up</a>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-
+                        </form>
 
                     </div>
                 </div>
